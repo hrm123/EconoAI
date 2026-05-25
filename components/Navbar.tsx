@@ -1,5 +1,6 @@
 "use client"
 import Link from 'next/link'
+import Image from 'next/image';
 import { useEffect, useState } from 'react'
 import { useAuth } from '@/lib/auth-context'
 
@@ -65,19 +66,29 @@ export default function Navbar() {
               <li><Link href="/">Home</Link></li>
               <li><Link href="/portfolio">Portfolio</Link></li>
               <li><Link href="/about">About</Link></li>
-              <li><Link href="/blog">Blog</Link></li>
-              {!user && <li><Link href="/signup">Sign Up</Link></li>}
+              {/* <li><Link href="/blog">Blog</Link></li>*/} 
+              <li><Link href="/contact">Contact Us</Link></li>
+              {/* {!user && <li><Link href="/signup">Sign Up</Link></li>*/}
             </ul>
           </div>
-          <Link href="/" className="btn btn-ghost text-xl font-bold">EconoAI</Link>
+          <Image 
+            src="/econoai.png"
+            alt="EconoAI Logo"
+            width={100}
+            height={50}
+          />
+          <Link href="/" className="btn btn-ghost text-xl font-bold">
+          
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li><Link href="/">Home</Link></li>
             <li><Link href="/portfolio">Portfolio</Link></li>
             <li><Link href="/about">About</Link></li>
-            <li><Link href="/blog">Blog</Link></li>
-            {!user && <li><Link href="/signup">Sign Up</Link></li>}
+            {/* <li><Link href="/blog">Blog</Link></li> */}
+            <li><Link href="/contact">Contact Us</Link></li>
+            {/* {!user && <li><Link href="/signup">Sign Up</Link></li>} */}
           </ul>
         </div>
         <div className="navbar-end gap-2">

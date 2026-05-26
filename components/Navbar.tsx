@@ -64,7 +64,7 @@ export default function Navbar() {
             </div>
             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
               <li><Link href="/">Home</Link></li>
-              <li><Link href="/portfolio">Portfolio</Link></li>
+              {/*<li><Link href="/portfolio">Portfolio</Link></li>*/}
               <li><Link href="/about">About</Link></li>
               {/* <li><Link href="/blog">Blog</Link></li>*/} 
               <li><Link href="/contact">Contact Us</Link></li>
@@ -72,7 +72,7 @@ export default function Navbar() {
             </ul>
           </div>
           <Image 
-            src="/econoai.png"
+            src="/econoai_logo.png"
             alt="EconoAI Logo"
             width={100}
             height={50}
@@ -84,7 +84,7 @@ export default function Navbar() {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li><Link href="/">Home</Link></li>
-            <li><Link href="/portfolio">Portfolio</Link></li>
+            {/*<li><Link href="/portfolio">Portfolio</Link></li>*/}
             <li><Link href="/about">About</Link></li>
             {/* <li><Link href="/blog">Blog</Link></li> */}
             <li><Link href="/contact">Contact Us</Link></li>
@@ -92,23 +92,7 @@ export default function Navbar() {
           </ul>
         </div>
         <div className="navbar-end gap-2">
-          {user ? (
-            <div className="dropdown dropdown-end">
-              <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar placeholder">
-                <div className="bg-neutral text-neutral-content rounded-full w-10">
-                  <span className="text-xl">{user.email?.[0].toUpperCase()}</span>
-                </div>
-              </div>
-              <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                <li className="menu-title"><span>{user.email}</span></li>
-                <li><a onClick={handleLogout}>Logout</a></li>
-              </ul>
-            </div>
-          ) : (
-            <button onClick={() => setShowLoginModal(true)} className="btn btn-primary btn-sm">
-              Login
-            </button>
-          )}
+          
 
           {/* Theme Controller */}
           <label className="swap swap-rotate btn btn-ghost btn-circle">

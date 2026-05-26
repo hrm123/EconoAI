@@ -1,13 +1,16 @@
+import Watermark from '@/components/watermark';
+
 export default function Portfolio() {
     const projects = [
-        { title: "Finance Bot", description: "AI-powered financial advisor chatbot.", tags: ["AI", "Chatbot", "Finance"] },
-        { title: "HealthScan", description: "Image recognition app for medical diagnosis.", tags: ["Computer Vision", "Healthcare", "Mobile"] },
-        { title: "MarketPredict", description: "Predictive analytics dashboard for stock trends.", tags: ["Data Science", "Dashboard", "Web"] },
-        { title: "EduTutor", description: "Personalized learning platform driven by AI.", tags: ["EdTech", "Recommendation Engine"] },
+        { title: "Finance Bot", description: "AI-powered financial advisor chatbot.", tags: ["Finance", "Mobile"] },
+        { title: "Todo Bot", description: "Your own  Personal Assistant - reminder, alerter.", tags: ["Productivity", "Mobile"] },
+        { title: "EduTutor", description: "Personalized learning platform driven by AI.", tags: ["EdTech", "Web", "Mobile"] },
+        { title: "Resume Builder", description: "AI-powered resume creation and optimization tool.", tags: ["Career", "Web"] },
     ];
 
     return (
         <div className="container mx-auto py-16 px-4">
+            <Watermark />
             <h1 className="text-4xl font-bold text-center mb-12">Our Portfolio</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {projects.map((project, index) => (

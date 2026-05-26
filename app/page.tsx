@@ -7,11 +7,11 @@ export default function Home() {
       <div className="hero min-h-[70vh] bg-base-200">
         <div className="hero-content text-center">
           <div className="max-w-md">
-            <h1 className="text-5xl font-bold">Innovative AI Solutions</h1>
+            <h1 className="text-5xl font-bold">Innovative Solutions using Artificial Intelligence edge</h1>
             <p className="py-6">
-              EconoAI creates cutting-edge websites and mobile applications for businesses, leveraging the power of Artificial Intelligence to drive growth and efficiency.
+              EconoAI creates economical, innovative solutions including websites and mobile applications for businesses, leveraging the power of Artificial Intelligence to drive growth and efficiency.
             </p>
-            <Link href="/portfolio" className="btn btn-primary">View Our Work</Link>
+            <Link href="/contact" className="btn btn-primary">Contact Us</Link>
           </div>
         </div>
       </div>
@@ -23,13 +23,13 @@ export default function Home() {
           <div className="card bg-base-100 shadow-xl border border-base-300">
             <div className="card-body items-center text-center">
               <h2 className="card-title">AI Integration</h2>
-              <p>Seamlessly integrate AI models into your existing workflows and applications.</p>
+              <p>Seamlessly integrate AI models/agents into your existing workflows and applications.</p>
             </div>
           </div>
           <div className="card bg-base-100 shadow-xl border border-base-300">
             <div className="card-body items-center text-center">
               <h2 className="card-title">Web Development</h2>
-              <p>Modern, responsive, and fast websites built with Next.js and TailwindCSS.</p>
+              <p>Modern, responsive, intuitive, and fast websites built to give you a competitive edge.</p>
             </div>
           </div>
           <div className="card bg-base-100 shadow-xl border border-base-300">

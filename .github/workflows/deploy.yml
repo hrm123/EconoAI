@@ -37,8 +37,8 @@ jobs:
         run: |
           echo "Hello from Bash!"
           if [ -z "$RESEND_API_KEY" ]; then
-          echo "Error: Secret not found!"
-          exit 1
+            echo "Error: Secret not found!"
+            exit 1
           fi
       - name: Checkout
         uses: actions/checkout@v3

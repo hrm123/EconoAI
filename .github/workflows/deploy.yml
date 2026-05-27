@@ -23,19 +23,16 @@ permissions:
 concurrency:
   group: "pages"
   cancel-in-progress: false
-
+env:
+  RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
 jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Use Secret
-        env:
-          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-        run: echo "Using Resend API Key"
-      - name: Run my script
+      - name: Secret key exists
         run: |
-          echo "Hello from Bash!"
+          echo "Resend setup test from Bash!"
           if [ -z "$RESEND_API_KEY" ]; then
             echo "Error: Secret not found!"
             exit 1
@@ -78,6 +75,8 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
       - name: Static HTML export with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next export
       - name: Upload artifact

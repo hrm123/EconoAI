@@ -48,7 +48,7 @@ export default function ContactPage() {
       } else {
         setStatus({
           type: "success",
-          message: `Successfully submitted your request. Reference ID: ${data.uuid}`,
+          message: `Successfully submitted your request. Note down your reference ID: ${data.uuid}`,
         })
         setName("")
         setHelpText("")

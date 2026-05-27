@@ -32,7 +32,7 @@ jobs:
       - name: Use Secret
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-        run: echo "Using Resend API Key: $RESEND_API_KEY"
+        run: echo "Using Resend API Key"
       - name: Run my script
         run: |
           echo "Hello from Bash!"

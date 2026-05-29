@@ -53,6 +53,9 @@ export function getStrapiImageUrl(image: StrapiImage | undefined): string {
 // Fetch all blog posts
 export async function getBlogPosts(): Promise<BlogPost[]> {
     try {
+        const blogPostsEmpty: BlogPost[] = [{title:'nothing found', slug:'', content:'', publishedAt: new Date().toISOString(), createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), id: 0, documentId: ''}];
+        return blogPostsEmpty;
+        /*
         const headers: HeadersInit = {
             'Content-Type': 'application/json',
         };
@@ -74,7 +77,17 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
         }
 
         const result: StrapiResponse<BlogPost[]> = await response.json();
-        return result.data || [];
+        
+        let responseOut;
+        if(! result.data || result.data.length === 0) {
+            console.warn('No blog posts found, returning empty array');
+            responseOut = blogPostsEmpty;
+        } else {
+            responseOut = result.data;
+        }
+        
+        return responseOut;
+        */
     } catch (error) {
         console.error('Error fetching blog posts:', error);
         return [];

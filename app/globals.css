@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+.logo-div {
+  background-image: url('/econoai_logo.png');
+  max-height: 80px; /* Essential if div is empty */
+  width: 100%;
+}
 /* Prose styles for markdown content */
 .prose {
   color: oklch(var(--bc));

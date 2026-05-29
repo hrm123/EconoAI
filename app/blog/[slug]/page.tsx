@@ -1,4 +1,4 @@
-import { getBlogPostBySlug, getAllBlogSlugs, getStrapiImageUrl } from '@/lib/strapi';
+import { getBlogPostBySlug, getAllBlogSlugs, getStrapiImageUrl, BlogPost } from '@/lib/strapi';
 import Image from 'next/image';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
@@ -31,10 +31,21 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 
 // Generate static paths for all blog posts
 export async function generateStaticParams() {
+    debugger;
+    const blogPostsEmpty: BlogPost[] = [{
+        title:'nothing found', 
+        slug:'nothing found', 
+        content:'', 
+        publishedAt: new Date().toISOString(), createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), id: 0, documentId: ''}];
+    return blogPostsEmpty;
+    /*
     const slugs = await getAllBlogSlugs();
     return slugs.map((slug) => ({
         slug,
     }));
+    */
+    // stragely when this API call returns empty array (due to exception etc) the error shown by NextJS is differente - it shows
+    //  "Error: missing generateStaticParams()"
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {

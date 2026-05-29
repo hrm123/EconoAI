@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { BlogPost, getStrapiImageUrl } from '@/lib/strapi';
@@ -5,6 +6,9 @@ import { BlogPost, getStrapiImageUrl } from '@/lib/strapi';
 interface BlogCardProps {
     post: BlogPost;
 }
+
+
+
 
 export default function BlogCard({ post }: BlogCardProps) {
     const imageUrl = getStrapiImageUrl(post.coverImage);

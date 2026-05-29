@@ -54,7 +54,8 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="navbar bg-base-100 shadow-sm sticky top-0 z-50">
+      <div className="navbar bg-base-100 shadow-sm sticky top-0 z-50 "
+      >
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -71,12 +72,7 @@ export default function Navbar() {
               {/* {!user && <li><Link href="/signup">Sign Up</Link></li>*/}
             </ul>
           </div>
-          <Image 
-            src="/econoai_logo.png"
-            alt="EconoAI Logo"
-            width={100}
-            height={50}
-          />
+          
           <Link href="/" className="btn btn-ghost text-xl font-bold">
           
           </Link>

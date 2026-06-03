@@ -1,6 +1,11 @@
 "use client"
+import { Resend } from "resend"
 
 import { useState } from "react"
+
+const resendApiKey = process.env.RESEND_API_KEY || ""
+const resend = new Resend(resendApiKey)
+
 
 function generateUuid(): string {
   if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
@@ -13,6 +18,40 @@ function generateUuid(): string {
     return v.toString(16)
   })
 }
+
+
+export async function POSTEmail(request: Request) {
+  const body = await request.json().catch(() => ({}))
+  const name = String(body.name || "").trim()
+  const helpText = String(body.helpText || "").trim()
+  const email = String(body.email || "").trim()
+  const uuid = String(body.uuid || generateUuid()).trim()
+
+  if (!name || !helpText || !email) {
+    return { success: false, errorMsg: "Your name, email, and request details are required." };
+  }
+
+  if (!resendApiKey) {
+    return { success: false, errorMsg: "Resend API key is not configured." };
+  }
+
+  try {
+    await resend.emails.send({
+      from: "EconoAI <noreply@econo.ai>",
+      // to: "econoai@ufereepixu.resend.app",
+      to: "hr@econo.ai",
+      subject: `EconoAI Contact Request — ${uuid}`,
+      reply_to: email,
+      text: `UUID: ${uuid}\n\nYour Name: ${name}\nYour Email: ${email}\nWhat you want help with:\n${helpText}`,
+    })
+
+    return { success: true, uuid }
+  } catch (error) {
+    console.error("Email error:", error)
+    return { success: false, errorMsg: "Failed to send your contact request. Please try again later." };
+  }
+}
+
 
 export default function ContactPage() {
   const [name, setName] = useState("")
@@ -31,7 +70,8 @@ export default function ContactPage() {
     try {
       const bodyJson = JSON.stringify({ name, helpText, email, uuid })
       console.log('bodyJson', bodyJson)
-      debugger
+      
+      /*
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -39,11 +79,17 @@ export default function ContactPage() {
       })
 
       const data = await response.json()
-
-      if (!response.ok) {
+      */
+      const response = await POSTEmail(new Request("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: bodyJson,
+      }));
+      
+      if (!response.success) {
         setStatus({
           type: "error",
-          message: data.error || "Unable to submit your request right now.",
+          message: response.errorMsg || "Unable to submit your request right now.",
         })
       } else {
         setStatus({
